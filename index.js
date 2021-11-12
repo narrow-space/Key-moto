@@ -151,12 +151,13 @@ async function run() {
 
     })
 
-    /////post uses to database
+    /////post user to database
     app.post('/users', async(req, res) => {
         const user =req.body
         const result=await userCollection.insertOne(user)
-        console.log(result)
+        
         res.json(result)
+        console.log(result)
     
 
       })
