@@ -152,17 +152,18 @@ async function run() {
     })
 
     /////post uses to database
-    app.post('/users', (req, res) => {
-
-      console.log(req.body)
-      userCollection.insertOne(req.body).then(data => {
-        res.json(data)
+    app.post('/users', async(req, res) => {
+        const user =req.body
+        const result=await userCollection.insertOne(user)
+        console.log(result)
+        res.json(result)
+    
 
       })
 
 
 
-    })
+  
 
     ///// make admin 
     app.put('/users/admin', async (req, res) => {
